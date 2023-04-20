@@ -174,6 +174,7 @@ Make has two wildcards.
 
 ==== `*`
 This searches for matching filenames in your filesystem.
+It can be used with variables, target, dependencies or in the `wildcard` function.
 
 [WARNING]
 ====
