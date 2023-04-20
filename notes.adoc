@@ -41,6 +41,30 @@ A target is run when:
 *** and the dependency file is newer than the target file
 ** doesn't exist but there is a target in the makefile to generate it, then the dependency file's target is run first to generate the depenedency file and then the actual target is run.
 
+A target is not executed when:
+
+* it has no dependency, and the target file exists
+* it has a dependency and the dependency file
+** exists but is older than the target file
+** doesn't exists
+*** there is no target to build it
+*** the target to build it fails
+
+[NOTE]
+====
+The above rules gives rise to any interesting scenario.
+For example, you have compiled you binary, and then you edit the binary.
+Still if you run `make` whether the target of the binary will be re-run or not depends on the above rules.
+Make doesn't care if you manually edited the binary.
+====
+
+
+[IMPORTANT]
+====
+Here when we say older/newer we are referring to the last file modfication time which could be the time of file creation or edit whichever happened latest.
+====
+
+
 The first target is the default target, hence if you do:
 ----
 make
