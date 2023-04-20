@@ -39,16 +39,28 @@ A target is run when:
 ** exists
 *** but the target file doesn't exist
 *** and the dependency file is newer than the target file
-** doesn't exist but there is a target in the makefile to generate it, then the dependency file's target is run first to generate the depenedency file and then the actual target is run.
+** doesn't exist but there is a dependency target in the makefile which doesn't run any commands which fails.
++
+[NOTE]
+====
+Here, the dependency target is run first, and then the actual target is run as long as none of the commands inside the dependency target fail.
+====
++
+[CAUTION]
+====
+The only thing that matters here is if the commands under the dependecy's target execute succesfully or not.
+It doesn't matter *if they don't create the dependency file*.
+Hence, even if the dependency file is not created, as long as there's a dependency target that doesn't run any command that fails, the target will run.
+====
 
 A target is not executed when:
 
 * it has no dependency, and the target file exists
 * it has a dependency and the dependency file
 ** exists but is older than the target file
-** doesn't exists
+** doesn't exists and
 *** there is no target to build it
-*** the target to build it fails
+*** the dependency's target executes a command that fails.
 
 [NOTE]
 ====
