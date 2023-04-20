@@ -136,9 +136,9 @@ a = one two <1>
 b = 'one two' <2>
 c = "one two" <3>
 ----
-<1> `a` is `one two`
-<2> `b` is `'one two'`
-<3> `c` is `"one two"`
+<1> `a` is `one` and `two`
+<2> `b` is `one two`
+<3> `c` is `one two`
 
 ====
 
