@@ -27,7 +27,7 @@ targets: prerequisites
 
 * `targets` are filenames, seperated by spaces.
 Normally, there's one per rule.
-* `command`(s) are series of steps used to make the targets.
+* `command`(s) are series of steps used to make the targets from the pre-requisites.
 They need to be tab-indented(not space).
 * `prerequisites` are filenames, seperated by spaces, which need to exist in order for the commands to be run.
 They are also called `dependencies`.
