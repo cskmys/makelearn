@@ -70,12 +70,12 @@ Still if you run `make` whether the target of the binary will be re-run or not d
 Make doesn't care if you manually edited the binary.
 ====
 
-
 [IMPORTANT]
 ====
 Here when we say older/newer we are referring to the last file modfication time which could be the time of file creation or edit whichever happened latest.
 ====
 
+== Running make file
 
 The first target is the default target, hence if you do:
 ----
@@ -87,3 +87,12 @@ To run a specific target:
 ----
 make <target>
 ----
+
+=== `clean`
+By convention, we write `clean` as a target to remove the output of all the other targets.
+Its not a keyword.
+
+[NOTE]
+====
+`clean` is not written at the top of the make file and it is not a dependency of any other targets.
+====
