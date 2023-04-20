@@ -1,0 +1,8 @@
+= Notes
+:toc: left
+:toclevels: 5
+
+Make is a build system that is used to compile C/C++ programs.
+It allows us to have various useful features such as recompiling only what is changed, executing instructions, conditionally compiling something etc.
+
+This tutorial compatible version 3 and 4 of `Make`.
