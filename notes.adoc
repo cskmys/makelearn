@@ -167,3 +167,18 @@ There are several https://www.gnu.org/software/make/manual/html_node/Automatic-V
 * `@`: contains the current target
 * `?`: contains all pre-requisites newer than the target
 * `^`: contains all pre-requisites
+
+=== Wildcard
+
+Make has two wildcards.
+
+==== `*`
+This searches for matching filenames in your filesystem.
+
+[WARNING]
+====
+Always wrap this in `wildcard` function.
+If you don't then if there's no filename match, it could be taken literally. 
+====
+
+==== `%`
