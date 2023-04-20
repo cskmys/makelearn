@@ -1,5 +1,13 @@
-some_file:
-	touch some_file
+all: one two three
+
+one:
+	touch one
+
+two:
+	touch two
+
+three:
+	touch three
 
 clean:
-	rm -f some_file
+	rm -f one two three

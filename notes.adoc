@@ -32,6 +32,21 @@ They need to be tab-indented(not space).
 * `prerequisites` are filenames, seperated by spaces, which need to exist in order for the commands to be run.
 They are also called `dependencies`.
 
+== Running make file
+
+The first target is the default target, hence if you do:
+----
+make
+----
+only that will be executed.
+
+To run a specific target:
+----
+make <target>
+----
+
+== Targets
+
 A target is run when:
 
 * it has no dependency, and the target file doesn't exist
@@ -75,24 +90,73 @@ Make doesn't care if you manually edited the binary.
 Here when we say older/newer we are referring to the last file modfication time which could be the time of file creation or edit whichever happened latest.
 ====
 
-== Running make file
+=== Multiple targets
 
-The first target is the default target, hence if you do:
+You can have multiple targets execute the same set of commands.
+For example:
 ----
-make
+f1 f2:
+    touch $@
 ----
-only that will be executed.
+`$@` is an automatic variable which will give you the current target's name.
 
-To run a specific target:
-----
-make <target>
-----
+=== Conventions
 
-=== `clean`
-By convention, we write `clean` as a target to remove the output of all the other targets.
-Its not a keyword.
+These are not keywords but just few conventions.
 
+==== `all`
+`all` as a target, is written at the top of the file with multiple targets as dependencies, to run multiple targets. 
+Since it is at the top, running just `make` will build everything.
+
+==== `clean`
+`clean` as a target, is written at the end of the file with no dependencies, to remove the output of all the other targets.
+
+== Variables
+
+variables can be created by:
+----
+<var_name> = <var_value>
+----
+or
+----
+<var_name> := <var_value>
+----
 [NOTE]
 ====
-`clean` is not written at the top of the make file and it is not a dependency of any other targets.
+There should be one space before and after `=` or `:=`
+====
+
+[IMPORTANT]
+====
+While assigning variables, unlike shell scripts, `"` or `'` have no meaning for `make`.
+
+[source, make]
+----
+a = one two <1>
+b = 'one two' <2>
+c = "one two" <3>
+----
+<1> `a` is `one two`
+<2> `b` is `'one two'`
+<3> `c` is `"one two"`
+
+====
+
+variables can be referenced by:
+----
+${<var_name>}
+----
+or
+----
+$(<var_name>)
+----
+
+[CAUTION]
+====
+Doing just:
+----
+$<var_name>
+----
+works as well.
+But, it is a very bad practice.
 ====
