@@ -189,3 +189,43 @@ It is versatile and its meaning depends on where it is used:
 This match is called a stem.
 * In replacing mode, it replaces the matched stem.
 * Also used in rule definitions and some specific functions
+
+== Rules
+
+=== Implicit rules
+
+[WARNING]
+====
+For the purpose of readability and maintainability, it is highly recommended to not use or rely on these rules.
+====
+
+Make was built for C/C++ compilation.
+It has few implicit rules and variables to ease C/C++ compilation.
+
+* Variables
+** `CC`: program for compiling `C`, default: `cc`
+** `CXX`: program for compiling `C++`, default: `g++`
+** `CFLAGS`: flags for `CC`
+** `CXXFLAGS`: flags for `CXX`
+** `CPPFLAGS`: flags for pre-processor
+** `LDFLAGS`: flags for linker
+
+* Rules
+** `<file>.o` is automatically compiled from:
+*** `<file>.c` by implictly executing the command:
++
+----
+${CC} -c ${CPPFLAGS} ${CFLAGS} $^ -o $@
+----
+
+*** `<file>.cpp` by implicitly executing the command:
++
+----
+${CXX} -c ${CPPFLAGS} ${CXXFLAGS} $^ -o $@
+----
+
+** `<file>` is automatically linked from `<file>.o` by implictly executing the command:
++
+----
+${CC} ${LDFLAGS} $^ ${LOADLIBS} ${LDLIBS} -o $@
+----
