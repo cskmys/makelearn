@@ -183,3 +183,9 @@ If you don't then if there's no filename match, it could be taken literally.
 ====
 
 ==== `%`
+It is versatile and its meaning depends on where it is used:
+
+* In matching mode, it can match one or more characters in a string.
+This match is called a stem.
+* In replacing mode, it replaces the matched stem.
+* Also used in rule definitions and some specific functions
