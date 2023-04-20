@@ -8,3 +8,27 @@ It allows us to have various useful features such as recompiling only what is ch
 This tutorial compatible version 3 and 4 of `Make`.
 
 You can get `make` from `apt`.
+
+== Makefile syntax
+A `Makefile` has a set of rules which look like:
+
+[source,make]
+----
+targets: prerequisites
+    command
+    ...
+    command
+----
+
+[IMPORTANT]
+====
+`Makefile` must be tab-indented and not spaces
+====
+
+* `targets` are filenames, seperated by spaces.
+Normally, there's one per rule.
+* `command`(s) are series of steps used to make the targets.
+They need to be tab-indented(not space).
+* `prerequisites` are filenames, seperated by spaces, which need to exist in order for the commands to be run.
+They are also called `dependencies`.
+
