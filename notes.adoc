@@ -32,3 +32,22 @@ They need to be tab-indented(not space).
 * `prerequisites` are filenames, seperated by spaces, which need to exist in order for the commands to be run.
 They are also called `dependencies`.
 
+A target is run when:
+
+* it has no dependency, and the target file doesn't exist
+* it has a dependency, and the dependency file:
+** exists
+*** but the target file doesn't exist
+*** and the dependency file is newer than the target file
+** doesn't exist but there is a target in the makefile to generate it, then the dependency file's target is run first to generate the depenedency file and then the actual target is run.
+
+The first target is the default target, hence if you do:
+----
+make
+----
+only that will be executed.
+
+To run a specific target:
+----
+make <target>
+----
