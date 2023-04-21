@@ -282,3 +282,22 @@ The default shell is `/bin/sh`, you can change this by setting the variable `SHE
 
 === `$$`
 Since `$` has a special meaning, you can escape it using another `$`.
+
+=== Error Handling
+
+Whenever there's an error while executing a target command `make` exits.
+Sometimes, we would like to not exit make, but:
+
+* Just stop the current target and run the next target:
++
+Run `make` with option `k`
+* Continue to run all the commands under the current target, and also continue to run the next target
++
+Run `make` with option `i`
+* Ignore just the error of a particular instruction and treat the rest normally as `make` would
++
+Prefix the specific instruction with `-` in the `Makefile`.
+
+=== Killing `make`
+
+If you kill `make` by sendin `SIGINT` via `Ctrl-C` it will not only exit but it will also delete the newer targets that it made during this run.
