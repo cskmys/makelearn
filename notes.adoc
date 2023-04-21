@@ -301,3 +301,9 @@ Prefix the specific instruction with `-` in the `Makefile`.
 === Killing `make`
 
 If you kill `make` by sendin `SIGINT` via `Ctrl-C` it will not only exit but it will also delete the newer targets that it made during this run.
+
+== Recursive `make`
+
+For big projects, each sub-project/module will have its own `Makefile` which can be invoked by a global `Makefile`.
+To recursively call a `Makefile`, use `${MAKE}` instead of `make`.
+When you recursively call make files, arguments will need to be passed down(some shouldn't be passed down) and this is taken care of automatically if you use `${MAKE}`.
