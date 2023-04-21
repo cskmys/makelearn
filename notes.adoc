@@ -252,3 +252,8 @@ The wildcard `%` can be combined with `filter` function to pick only the files t
 === Pattern rules
 
 You can use `%` wildcard to define rules for files matching a the pattern.
+
+=== Double-colon rules
+
+These are rarely used, but allows us to define multiple rules for the same target.
+If we forget to put double colon, then only the commands under the second set would run.
