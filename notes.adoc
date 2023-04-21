@@ -248,12 +248,7 @@ The matched stem is then substitued into `prereq-pattern` to generate the target
 ==== Filter
 
 The wildcard `%` can be combined with `filter` function to pick only the files that match the pattern defined by `%`.
-For example,
 
-[source, make]
-----
-obj_files = foo.result bar.o lose.o
-...
-$(filter %.o,${obj_files}): %.o: %.c <1>
-----
-<1> `filter %.o,${obj_files}` picks `bar.o` and `lose.o` out of `foo.result bar.o lose.o`
+=== Pattern rules
+
+You can use `%` wildcard to define rules for files matching a the pattern.

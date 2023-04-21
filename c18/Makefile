@@ -14,7 +14,7 @@ $(filter %.res,$(obj_files)): %.res: %.raw # since there are no implicit rules o
 # "foo.res.c" which it will try to compile as "foo.res.o" and link "foo.res.o" as executable "foo.res"
 # since "foo.res.c" is empty, so is "foo.res.o", but "foo.res" requires a "main" function and hence we get a failure. 
 
-%.c %.raw:
+%.c %.raw: #pattern rule that all files with extension ".c" and ".raw" must execute the command(s) below
 	touch ${@}
 
 clean:
