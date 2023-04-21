@@ -2,7 +2,7 @@
 :toc: left
 :toclevels: 5
 
-Make is a build system that is used to compile C/C++ programs.
+Make is a build system that is used to compile C/{cpp} programs.
 It allows us to have various useful features such as recompiling only what is changed, executing instructions, conditionally compiling something etc.
 
 This tutorial compatible version 3 and 4 of `Make`.
@@ -199,12 +199,12 @@ This match is called a stem.
 For the purpose of readability and maintainability, it is highly recommended to not use or rely on these rules.
 ====
 
-Make was built for C/C++ compilation.
-It has few implicit rules and variables to ease C/C++ compilation.
+Make was built for C/{cpp} compilation.
+It has few implicit rules and variables to ease C/{cpp} compilation.
 
 * Variables
 ** `CC`: program for compiling `C`, default: `cc`
-** `CXX`: program for compiling `C++`, default: `g++`
+** `CXX`: program for compiling `{cpp}`, default: `g++`
 ** `CFLAGS`: flags for `CC`
 ** `CXXFLAGS`: flags for `CXX`
 ** `CPPFLAGS`: flags for pre-processor
@@ -273,15 +273,15 @@ There is no memory between commands, hence, its as if each command is run in a n
 
 [WARNING]
 ====
-Shell variables such as `${PWD}` in the target commands are replaced before running any commands.
-Hence, the value you'll get is the value at the time of running `make` command in shell, not the latest value during the execution of the target command. 
+Shell variables such as `PWD`, when accessed in the target commands using single `$` as `$PWD` are replaced with its value before running any commands.
+Hence, the value you'll get is the value at the time of running `make` command in shell, not the latest value during the execution of the target command.
+
+To get the latest value at the time of execution of the target command, escape the variable acess with another `$` as `\$$PWD`.
+Now at the time of execution of the `make` command `$$PWD` gets replaced as `$PWD`, hence during the execution of the target command, you'll get the value of the `$PWD` at that moment rather than the value that was present at the time of `make` command. 
 ====
 
 === Default shell
 The default shell is `/bin/sh`, you can change this by setting the variable `SHELL`
-
-=== `$$`
-Since `$` has a special meaning, you can escape it using another `$`.
 
 === Error Handling
 
