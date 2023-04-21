@@ -229,3 +229,14 @@ ${CXX} -c ${CPPFLAGS} ${CXXFLAGS} $^ -o $@
 ----
 ${CC} ${LDFLAGS} $^ ${LOADLIBS} ${LDLIBS} -o $@
 ----
+
+=== Static Pattern rules
+They help to write less while still being clear unlike implicit rules.
+They use patterns:
+[source, make]
+----
+targets...: target-pattern: prereq-patterns ...
+    commands
+---- 
+Here the target is matched by `target-pattern` via `%` wildcard.
+The matched stem is then substitued into `prereq-pattern` to generate the target's prerequisites.
