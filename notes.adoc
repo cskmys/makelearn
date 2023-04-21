@@ -230,6 +230,10 @@ ${CXX} -c ${CPPFLAGS} ${CXXFLAGS} $^ -o $@
 ${CC} ${LDFLAGS} $^ ${LOADLIBS} ${LDLIBS} -o $@
 ----
 
+==== `PHONY` target
+Sometimes we want to have a target as just as a command and we don't want implicit rules to try to build an executable having the target's name.
+In such cases, we mark the target as `PHONY` to avoid building an executable.
+
 === Static Pattern rules
 They help to write less while still being clear unlike implicit rules.
 They use patterns:

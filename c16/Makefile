@@ -1,19 +1,17 @@
-objects = foo.o bar.o all.o
-all: ${objects}
-# implicitly means link all the 3 ".o" files to generate "all"
-${objects}: %.o: %.c
-# equivalent to writing:
-# foo.o: foo.c
-# bar.o: bar.c
-# all.o: all.c
-# using implicit rules
+CC = gcc
+CFLAGS = -g
 
-all.c:
-	echo "int main(){ return 0; }" > all.c
+test: test.o ret.o
+#now implicit rules will link "test.o" and "ret.o" to generate "test"
 
-%.c:
-	touch ${@}
-# since "all.c" already has a target the remaining: "foo.c", "bar.c" will come here
+build_obj: test.o ret.o
+.PHONY: build_obj # as its marked "PHONY" implicit rules will not create executable "build_obj" by linking "test.o" and "ret.o"
+
+ret.c:
+	echo "int get_ret(){ return 0; }" > ret.c
+
+test.c:
+	echo "extern int get_ret(); int main(){ return get_ret(); }" > test.c
 
 clean:
-	rm -f *.c *.o all
+	rm -f test* ret*
