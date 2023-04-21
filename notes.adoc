@@ -257,3 +257,22 @@ You can use `%` wildcard to define rules for files matching a the pattern.
 
 These are rarely used, but allows us to define multiple rules for the same target.
 If we forget to put double colon, then only the commands under the second set would run.
+
+== Commands and execution
+
+=== Command Echoing/Silencing
+
+Make prints not just the command output but the command that it is executing as well.
+To globally silence printing of all the commands(but not its outputs), you can run `make` with option `s`.
+If you want to silence a particular command(but not its output) you can prefix the command with `@`.
+
+=== Command execution
+
+Each command is independently executed of other commands.
+There is no memory between commands, hence, its as if each command is run in a new shell.
+
+=== Default shell
+The default shell is `/bin/sh`, you can change this by setting the variable `SHELL`
+
+=== `$$`
+Since `$` has a special meaning, you can escape it using another `$`.
