@@ -271,6 +271,12 @@ If you want to silence a particular command(but not its output) you can prefix t
 Each command is independently executed of other commands.
 There is no memory between commands, hence, its as if each command is run in a new shell.
 
+[WARNING]
+====
+Shell variables such as `${PWD}` in the target commands are replaced before running any commands.
+Hence, the value you'll get is the value at the time of running `make` command in shell, not the latest value during the execution of the target command. 
+====
+
 === Default shell
 The default shell is `/bin/sh`, you can change this by setting the variable `SHELL`
 
